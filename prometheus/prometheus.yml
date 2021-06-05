@@ -1,0 +1,6 @@
+# /tmp/prometheus.yml
+scrape_configs:
+- job_name: 'sender'
+  scrape_interval: 5s
+  static_configs:
+  - targets: ['sender:8081']

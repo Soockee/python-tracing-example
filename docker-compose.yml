@@ -1,0 +1,25 @@
+version: "3.8"
+services:
+  sender:
+    build: 
+        context: ./sender
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+    container_name: "sender"
+  receiver:
+    build: 
+        context: ./receiver
+    ports:
+      - "8082:8080"
+    container_name: "receiver"
+  prometheus:
+    image: prom/prometheus
+    ports: 
+      - "9009:9009"
+
+  jaeger:
+    container_name: jaeger
+    image: jaegertracing/all-in-one:latest
+    ports:
+      - "0.0.0.0:16686:16686"
